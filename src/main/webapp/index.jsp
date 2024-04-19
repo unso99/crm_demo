@@ -1,31 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-String savedId = "";
-String savedPwd = "";
-Cookie[] cooks = request.getCookies();
-boolean hasCook = false;
-if (cooks != null) {
-	for (Cookie tmp : cooks) {
-		String key = tmp.getName();
-		if (key.equals("savedId")) {
-	savedId = tmp.getValue();
-		}
-
-		if (key.equals("savedPwd")) {
-	savedPwd = tmp.getValue();
-	hasCook = true;
+<% 
+	String id = "";
+	Cookie[] cooks = request.getCookies();
+	if (cooks != null) {
+		for (Cookie tmp : cooks) {
+			String key = tmp.getName();
+			if (key.equals("savedId")) {
+				id = tmp.getValue();
+			}
 		}
 	}
-}
-%>
+%> 	
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<meta charset="UTF-8">
 <title>index.jsp</title>
 
 <link
@@ -38,43 +28,9 @@ if (cooks != null) {
 	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 	crossorigin="anonymous"></script>
 </head>
-</head>
 <body>
-	<div class="container">
-		<div class="card-body p-0">
-			<!-- Nested Row within Card Body -->
-			<div class="row">
-					<div class="p-5">
-						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-						</div>
-						<form class="user"
-							action="login.jsp" method="post">
-							<div class="form-group">
-								<input type="text" class="form-control form-control-user"
-									value="<%=savedId%>" id="exampleInputEmail" name="id"
-									aria-describedby="emailHelp" placeholder="Enter id...">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control form-control-user"
-									value="<%=savedPwd%>" id="exampleInputPassword"
-									name="password" placeholder="Password">
-							</div>
-							<div class="form-group">
-								<div class="custom-control custom-checkbox small">
-									<input type="checkbox" class="custom-control-input" id="isSave"
-										name="isSave"
-										<%=(savedId != null && !savedId.isEmpty()) ? "checked" : ""%>>
-									<label class="custom-control-label" for="isSave">Remember
-										Me</label>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-primary btn-user btn-block">
-								Login</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="customer" name="current"/>
+	</jsp:include>
 </body>
 </html>
