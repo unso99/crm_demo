@@ -31,21 +31,22 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("errorMessage", "Invalid email or password. Please try again.");
 			RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
 			rd.forward(req, resp);
+		} else {
+			if (dto.getId().equals(id) && dto.getPassword().equals(pwd)) {
+				// 사용자 인증이 성공하면 세션을 생성하고 사용자를 로그인 상태로 유지
+				HttpSession session = req.getSession();
+				session.setAttribute("id", id);
+				isSuccess = true;
+
+				req.setAttribute("isSuccess", isSuccess);
+
+				System.out.println(isSuccess);
+				// 로그인 성공 시 메인 페이지로 이동
+				RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
+				rd.forward(req, resp);
+
+			}
 		}
 
-		if (dto.getId().equals(id) && dto.getPassword().equals(pwd)) {
-			// 사용자 인증이 성공하면 세션을 생성하고 사용자를 로그인 상태로 유지
-			HttpSession session = req.getSession();
-			session.setAttribute("id", id);
-			isSuccess = true;
-
-			req.setAttribute("isSuccess", isSuccess);
-		
-			System.out.println(isSuccess);
-			// 로그인 성공 시 메인 페이지로 이동
-			RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
-			rd.forward(req, resp);
-			
-		}
 	}
 }
