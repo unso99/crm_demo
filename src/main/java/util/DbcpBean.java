@@ -23,7 +23,7 @@ public class DbcpBean {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
 			// Servers/context.xml 문서에 설정된 jdbc/myoracle이라는 이름의 datasource 를 얻어온다.
-			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
+			DataSource ds = (DataSource) envContext.lookup("jdbc/OracleDB");
 			// 얻어온 datasource 객체를 이용해서 Connection 객체의 참조값을 얻어와서 필드에 저장
 			conn = ds.getConnection();
 			// 예외가 발생하지 않고 여기까지 실행의흐름이 넘어온다면 성공

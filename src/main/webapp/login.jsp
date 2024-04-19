@@ -1,12 +1,16 @@
+<%@page import="owner.dto.OwnerDto"%>
+<%@page import="owner.dao.OwnerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>login.jsp</title>
-</head>
-<body>
-	<h1>로그인 성공 실패 페이지</h1>
-</body>
-</html>
+<% 
+	request.setCharacterEncoding("utf-8");
+	String id = request.getParameter("id");
+	String pwd = request.getParameter("password");
+	
+	boolean isValid = false;
+	OwnerDto dto = OwnerDao.getInstance().getData(id);
+	if(dto.getPassword().equals(pwd)){
+		isValid = true;
+	}
+%>
+{"isSuccess" : <%=isValid %>}
