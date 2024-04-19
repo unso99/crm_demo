@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String savedId = "";
+	String savedPwd = "";
+	Cookie[] cooks = request.getCookies();
+	boolean hasCook = false;
+	if(cooks != null) {
+		for(Cookie tmp : cooks) {
+			String key = tmp.getName();
+			if(key.equals("savedId")){
+				savedId = tmp.getValue();
+			}
+			
+			if(key.equals("savedPwd")){
+				savedPwd = tmp.getValue();
+				hasCook = true;
+			}
+		}
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,51 +37,27 @@
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<div class="container">
 		<main class="form-signin w-100 m-auto">
-			<form action="login.jsp" method="post" id="logiForm">
+			<form action="${pageContext.request.contextPath}/login" method="post">
 				<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 				<div class="form-floating">
 					<input type="text" class="form-control" id="id" name="id"
-						placeholder="name@example.com"> <label for="id">Email
+						placeholder="id" value="<%=savedId%>"> <label for="id">Email
 						address</label>
 				</div>
 				<div class="form-floating">
 					<input type="password" class="form-control" id="password" name="password"
-						placeholder="Password"> <label for="password">Password</label>
+						placeholder="Password" value="<%=savedPwd%>"> <label for="password">Password</label>
 				</div>
 				<div class="form-check text-start my-3">
-					<input class="form-check-input" type="checkbox" value="remember-me"
+					<input class="form-check-input" type="checkbox" <%=(savedId != null && !savedId.isEmpty()) ? "checked" : ""%> name="isSave"
 						id="flexCheckDefault"> <label class="form-check-label"
-						for="flexCheckDefault"> Remember me </label>
+						for="isSave"> Remember me </label>
 				</div>
 				<button class="btn btn-primary w-100 py-2" type="submit">Sign
 					in</button>
 			</form>
 		</main>
 	</div>
-	<script>
-	document.querySelector("#logiForm").addEventListener("submit", (e)=>{
-		alert("오잉 제출?");
-
-		e.preventDefault();
-		
-		const form=document.querySelector("#logiForm");
-		//폼에 입력한 내용을 query string 형식으로 변환해서 얻어낸다 
-		const queryString=new URLSearchParams(new FormData(form)).toString();
-		//query string 을 콘솔에 출력해 보기
-		console.log(queryString);
-		//fetch() 함수를 이용해서 post 방식 요청하기
-		fetch("login.jsp", {
-			method:"POST",
-			headers:{"Content-Type":"application/x-www-form-urlencoded; charset=utf-8"},
-			body:queryString
-		})
-		.then(res=>res.json())
-		.then(data=>{
-			console.log(data);
-		});
-	});
-		
-	</script>
 
 </body>
 </html>
