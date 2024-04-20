@@ -30,6 +30,9 @@
 	<div class="container mt-5">
 		<form action="update.jsp" method="post">
 			<div class="mb-3">
+			  <input type="hidden" class="form-control" id="id" name="id" placeholder="홍길동" value="<%=dto.getId() %>">
+			</div>
+			<div class="mb-3">
 			  <label for="name" class="form-label">이름</label>
 			  <input type="text" class="form-control" id="name" name="name" placeholder="홍길동" value="<%=dto.getName() %>">
 			</div>
@@ -39,7 +42,7 @@
 			</div>
 			<div class="mb-3">
 			  <label for="phone" class="form-label">전화번호</label>
-			  <input type="number" class="form-control" id="phone" name="phone" placeholder="01012345678" vlaue="<%=dto.getPhone() %>">
+			  <input type="number" class="form-control" id="phone" name="phone" placeholder="01012345678" value="<%=dto.getPhone() %>">
 			</div>
 			<div class="mb-3">
 			  <label for="email" class="form-label">이메일</label>

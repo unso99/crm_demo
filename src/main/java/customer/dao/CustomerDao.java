@@ -135,4 +135,40 @@ public class CustomerDao {
 		
 		return dto;
 	}
+	
+	public boolean update(CustomerDto dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			// 실행할 sql 문
+			String sql = "UPDATE customer"
+					+ " SET name=?, birth=?, phone=?, email=?, address=?"
+					+ " WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getBirth());
+			pstmt.setString(3, dto.getPhone());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getAddress());
+			pstmt.setLong(6, dto.getId());
+			rowCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (rowCount > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
