@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.jsp">고객관리</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">고객관리</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarScroll"
 					aria-controls="navbarScroll" aria-expanded="false"
@@ -19,7 +19,7 @@
 							data-bs-toggle="dropdown" aria-expanded="false"> 고객 </a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarScrollingDropdown">
-								<li><a class="dropdown-item" href="#">고객 등록</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/customer/insert_form.jsp">고객 등록</a></li>
 								<li><a class="dropdown-item" href="#">고객 조회</a></li>
 								<li><a class="dropdown-item" href="#">고객 상세조회</a></li>
 							</ul></li>
