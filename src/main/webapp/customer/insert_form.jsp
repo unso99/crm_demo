@@ -31,7 +31,7 @@
 			</div>
 			<div class="mb-3">
 			  <label for="phone" class="form-label">전화번호</label>
-			  <input type="number" class="form-control" id="phone" name="phone" placeholder="01012345678">
+			  <input type="text" class="form-control" id="phone" name="phone" placeholder="01012345678">
 			</div>
 			<div class="mb-3">
 			  <label for="email" class="form-label">이메일</label>

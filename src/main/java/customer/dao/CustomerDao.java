@@ -96,24 +96,22 @@ public class CustomerDao {
 
 		return list;
 	}
-	
+
 	public CustomerDto getData(long id) {
 		CustomerDto dto = new CustomerDto();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			conn = new DbcpBean().getConn();
-			String sql = "SELECT *"
-					+ " FROM customer"
-					+ " WHERE id=?";
-			
+			String sql = "SELECT *" + " FROM customer" + " WHERE id=?";
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				dto.setId(id);
 				dto.setName(rs.getString("name"));
 				dto.setBirth(rs.getString("birth"));
@@ -121,21 +119,24 @@ public class CustomerDao {
 				dto.setPhone(rs.getString("phone"));
 				dto.setAddress(rs.getString("address"));
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null) rs.close();
-				if(conn != null) conn.close();
-				if(pstmt != null) pstmt.close();
-			}catch(Exception e) {
+				if (rs != null)
+					rs.close();
+				if (conn != null)
+					conn.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return dto;
 	}
-	
+
 	public boolean update(CustomerDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -143,9 +144,7 @@ public class CustomerDao {
 		try {
 			conn = new DbcpBean().getConn();
 			// 실행할 sql 문
-			String sql = "UPDATE customer"
-					+ " SET name=?, birth=?, phone=?, email=?, address=?"
-					+ " WHERE id=?";
+			String sql = "UPDATE customer" + " SET name=?, birth=?, phone=?, email=?, address=?" + " WHERE id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getBirth());
@@ -153,6 +152,35 @@ public class CustomerDao {
 			pstmt.setString(4, dto.getEmail());
 			pstmt.setString(5, dto.getAddress());
 			pstmt.setLong(6, dto.getId());
+			rowCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (rowCount > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean delete(long id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			// 실행할 sql 문
+			String sql = "DELETE FROM customer" + " WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, id);
 			rowCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

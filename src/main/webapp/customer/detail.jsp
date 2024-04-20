@@ -42,7 +42,7 @@
 			</div>
 			<div class="mb-3">
 			  <label for="phone" class="form-label">전화번호</label>
-			  <input type="number" class="form-control" id="phone" name="phone" placeholder="01012345678" value="<%=dto.getPhone() %>">
+			  <input type="text" class="form-control" id="phone" name="phone" placeholder="01012345678" value="<%=dto.getPhone() %>">
 			</div>
 			<div class="mb-3">
 			  <label for="email" class="form-label">이메일</label>
@@ -54,6 +54,7 @@
 			</div>
 			<div class="row">
 				<button type="submit" class="btn btn-primary mb-3">수정하기</button>
+				<a class="btn btn-danger mb-3" href="delete.jsp?id=<%=dto.getId() %>">삭제하기</a>
 				<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/index.jsp">뒤로가기</a>
 			</div>
 		</form>
