@@ -20,6 +20,15 @@ public class CustomerDto {
 		this.address = address;
 	}
 
+	public CustomerDto(String name, String birth, String phone, String email, String address) {
+		super();
+		this.name = name;
+		this.birth = birth;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+	}
+
 	public long getId() {
 		return id;
 	}

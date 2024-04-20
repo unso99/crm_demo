@@ -39,7 +39,7 @@
 			</div>
 			<div class="mb-3">
 			  <label for="address" class="form-label">주소</label>
-			  <input type="email" class="form-control" id=""address" name=""address" placeholder="서울특별시 서초구 ...">
+			  <input type="text" class="form-control" id="address" name="address" placeholder="서울특별시 서초구 ...">
 			</div>
 			<div class="row">
 				<button type="submit" class="btn btn-primary">등록하기</button>
