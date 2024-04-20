@@ -55,7 +55,9 @@
 		  	<%for(CustomerDto dto : list) { %>
 		  		<tr>
 			      <th scope="row"><%=dto.getId() %></th>
-			      <td><%=dto.getName() %></td>
+			      <td>
+			      	<a href="${pageContext.request.contextPath}/customer/detail.jsp?id=<%=dto.getId() %>"><%=dto.getName() %></a>
+			      </td>
 			      <td><%=dto.getBirth() %></td>
 			      <td><%=dto.getPhone() %></td>
 			      <td><%=dto.getEmail() %></td>
