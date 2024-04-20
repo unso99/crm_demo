@@ -9,12 +9,12 @@ if (cooks != null) {
 	for (Cookie tmp : cooks) {
 		String key = tmp.getName();
 		if (key.equals("savedId")) {
-	savedId = tmp.getValue();
+			savedId = tmp.getValue();
 		}
 
 		if (key.equals("savedPwd")) {
-	savedPwd = tmp.getValue();
-	hasCook = true;
+			savedPwd = tmp.getValue();
+			hasCook = true;
 		}
 	}
 }
@@ -26,7 +26,7 @@ if (cooks != null) {
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>index.jsp</title>
+<title>/user/login_form.jsp</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"

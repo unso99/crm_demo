@@ -1,20 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<% 
-	String id = "";
-	Cookie[] cooks = request.getCookies();
-	if (cooks != null) {
-		for (Cookie tmp : cooks) {
-			String key = tmp.getName();
-			if (key.equals("savedId")) {
-				id = tmp.getValue();
-			}
-		}
-	}
-	
-	request.setAttribute("id", id);
-%> 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.jsp">고객관리</a>

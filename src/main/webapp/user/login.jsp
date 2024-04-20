@@ -29,7 +29,8 @@ if (isSave != null) {
 }
 
 if (dto != null && dto.getId() != null && dto.getId().equals(id) && dto.getPassword().equals(pwd)) {
-	isSuccess = true; // Set isSuccess to true upon successful login
+	isSuccess = true;
+	session.setAttribute("id", id);
 }
 %>
 <!DOCTYPE html>
@@ -38,7 +39,7 @@ if (dto != null && dto.getId() != null && dto.getId().equals(id) && dto.getPassw
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<title>login.jsp</title>
+<title>/user/login.jsp</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
