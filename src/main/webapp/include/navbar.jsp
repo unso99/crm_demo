@@ -20,8 +20,7 @@
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarScrollingDropdown">
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/customer/insert_form.jsp">고객 등록</a></li>
-								<li><a class="dropdown-item" href="#">고객 조회</a></li>
-								<li><a class="dropdown-item" href="#">고객 상세조회</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/index.jsp">고객 조회</a></li>
 							</ul></li>
 						<li class="nav-item dropdown" aria-current="page">
 							<a class="nav-link dropdown-toggle ${param.current eq 'counsel' ? 'active' : '' }" href="#"
@@ -31,7 +30,6 @@
 								aria-labelledby="navbarScrollingDropdown">
 								<li><a class="dropdown-item" href="#">상담 등록</a></li>
 								<li><a class="dropdown-item" href="#">상담 조회</a></li>
-								<li><a class="dropdown-item" href="#">상담 상세조회</a></li>
 							</ul></li>
 					</ul>
 					<div class="navbar-nav">

@@ -1,3 +1,6 @@
+<%@page import="customer.dao.CustomerDao"%>
+<%@page import="customer.dto.CustomerDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
@@ -11,6 +14,7 @@
 			}
 		}
 	}
+	List<CustomerDto> list = CustomerDao.getInstance().getList();
 %> 	
 <!DOCTYPE html>
 <html>
@@ -40,29 +44,24 @@
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
-		      <th scope="col">First</th>
-		      <th scope="col">Last</th>
-		      <th scope="col">Handle</th>
+		      <th scope="col">이름</th>
+		      <th scope="col">생년월일</th>
+		      <th scope="col">전화번호</th>
+		      <th scope="col">이메일</th>
+		      <th scope="col">주소</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td colspan="2">Larry the Bird</td>
-		      <td>@twitter</td>
-		    </tr>
+		  	<%for(CustomerDto dto : list) { %>
+		  		<tr>
+			      <th scope="row"><%=dto.getId() %></th>
+			      <td><%=dto.getName() %></td>
+			      <td><%=dto.getBirth() %></td>
+			      <td><%=dto.getPhone() %></td>
+			      <td><%=dto.getEmail() %></td>
+			      <td><%=dto.getAddress() %></td>
+			    </tr>
+		  	<%} %>
 		  </tbody>
 		</table>
 	</div>
