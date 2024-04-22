@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
+	long customer_id = -1;
+	if(request.getParameter("customer_id") != null) {
+		customer_id = Long.parseLong(request.getParameter("customer_id"));	
+	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +33,11 @@
 		<form action="insert.jsp" method="post">
 			<div class="mb-3">
 			  <label for="customer_id" class="form-label">고객 번호</label>
+			  <%if(customer_id > 0) {%>
+			  <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="고객의 번호를 입력해주세요." value="<%=customer_id%>">
+			  <%} else { %>
 			  <input type="text" class="form-control" id="customer_id" name="customer_id" placeholder="고객의 번호를 입력해주세요.">
+			  <%} %>
 			</div>
 			<div class="mb-3">
 			  <label for="counselor" class="form-label">상담사</label>

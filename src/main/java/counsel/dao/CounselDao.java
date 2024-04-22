@@ -28,7 +28,7 @@ public class CounselDao {
 		try {
 			conn = new DbcpBean().getConn();
 			String sql = "INSERT INTO counsel" + " (id, customer_id, counselor, description, created_at, is_finished)"
-					+ " VALEUS(seq_counsel.NEXTVAL,?,?,?,SYSDATE,'false')";
+					+ " VALUES(seq_counsel.NEXTVAL,?,?,?,SYSDATE,'false')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, dto.getCustomer_id());
 			pstmt.setString(2, dto.getCounselor());

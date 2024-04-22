@@ -35,7 +35,7 @@
 		<%if(id != -1) {%>
 			<p>
 				<strong><%=dto.getName() %></strong> 고객님의 번호는 <strong><%=id %></strong>번 입니다.
-				<a href="insert_form.jsp">등록하러가기</a>
+				<a href="insert_form.jsp?customer_id=<%=id %>">등록하러가기</a>
 			</p>
 		<%} else { %>
 			<p>
