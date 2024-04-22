@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/counsel/list.jsp</title>
+<title>/counsle/search_customer_id</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,25 +19,5 @@
 	<jsp:include page="/include/navbar.jsp">
 		<jsp:param value="counsel" name="current"/>
 	</jsp:include>
-	<div class="container">
-		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<a class="btn btn-primary me-md-2 mt-2" href="${pageContext.request.contextPath}/counsel/insert_form.jsp">상담 등록</a>
-		</div>
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">이름</th>
-		      <th scope="col">생년월일</th>
-		      <th scope="col">전화번호</th>
-		      <th scope="col">이메일</th>
-		      <th scope="col">주소</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		  	
-		  </tbody>
-		</table>
-	</div>
 </body>
 </html>

@@ -38,7 +38,7 @@
 	</jsp:include>
 	<div class="container">
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<a class="btn btn-primary me-md-2 mt-2" href="${pageContext.request.contextPath}/customer/insert_form.jsp">고객 등록</a>
+			<a class="btn btn-primary me-md-2 mt-2" href="${pageContext.request.contextPath}/counsel/search_customer_id">고객 등록</a>
 		</div>
 		<table class="table">
 		  <thead>
