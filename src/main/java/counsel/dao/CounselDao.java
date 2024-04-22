@@ -2,8 +2,12 @@ package counsel.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import counsel.dto.CounselDto;
+import customer.dto.CustomerDto;
 import util.DbcpBean;
 
 public class CounselDao {
@@ -51,6 +55,47 @@ public class CounselDao {
 			return true;
 		else
 			return false;
+	}
+	
+	public List<CounselDto> getList() {
+		List<CounselDto> list = new ArrayList<CounselDto>();
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT *" + " FROM counsel" + " ORDER BY id ASC";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				CounselDto tmp = new CounselDto();
+				tmp.setId(rs.getLong("id"));
+				tmp.setCustomer_id(rs.getLong("customer_id"));
+				tmp.setCounselor(rs.getString("counselor"));
+				tmp.setDescription(rs.getString("description"));
+				tmp.setCreated_at(rs.getString("created_at"));
+				tmp.setUpdated_at(rs.getString("updated_at"));
+				tmp.setIs_finished(rs.getString("is_finished"));
+				list.add(tmp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
 	}
 
 }

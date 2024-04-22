@@ -70,7 +70,29 @@ public class CounselDto {
 	}
 
 	private long id;
+	public CounselDto(long id, long customer_id, String customer_name, String counselor, String description,
+			String created_at, String updated_at, String is_finished) {
+		super();
+		this.id = id;
+		this.customer_id = customer_id;
+		this.customer_name = customer_name;
+		this.counselor = counselor;
+		this.description = description;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+		this.is_finished = is_finished;
+	}
+
+	public String getCustomer_name() {
+		return customer_name;
+	}
+
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
+	}
+
 	private long customer_id;
+	private String customer_name;
 	private String counselor;
 	private String description;
 	private String created_at;

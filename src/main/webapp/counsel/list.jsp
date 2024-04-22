@@ -1,5 +1,18 @@
+<%@page import="customer.dao.CustomerDao"%>
+<%@page import="customer.dto.CustomerDto"%>
+<%@page import="counsel.dao.CounselDao"%>
+<%@page import="counsel.dto.CounselDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	List<CounselDto> list = CounselDao.getInstance().getList();
+
+	for(CounselDto tmp : list) {
+		String name = CustomerDao.getInstance().getData(tmp.getCustomer_id()).getName();
+		tmp.setCustomer_name(name);
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +40,34 @@
 		  <thead>
 		    <tr>
 		      <th scope="col">#</th>
-		      <th scope="col">이름</th>
-		      <th scope="col">생년월일</th>
-		      <th scope="col">전화번호</th>
-		      <th scope="col">이메일</th>
-		      <th scope="col">주소</th>
+		      <th scope="col">고객이름</th>
+		      <th scope="col">상담자</th>
+		      <th scope="col">최근 상담일자</th>
+		      <th scope="col">완료</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		  	
+		  	<%for(CounselDto dto : list) {%>
+		  		<tr>
+		  			<th scope="row"><%=dto.getId() %></th>
+					<td><%=dto.getCustomer_name() %></td>
+					<td><%=dto.getCounselor() %></td>
+					<td>
+						<%if(dto.getUpdated_at() == null) {%>
+							<%=dto.getCreated_at() %>
+						<%} else {%>
+							<%=dto.getUpdated_at() %>
+						<%} %>
+					</td>
+					<td>
+						<%if(dto.getIs_finished().equals("false")) {%>
+							진행중
+						<%} else {%>
+							완료
+						<%} %>
+					</td>		  		
+		  		</tr>
+		  	<%} %>
 		  </tbody>
 		</table>
 	</div>
