@@ -199,4 +199,40 @@ public class CustomerDao {
 			return false;
 		}
 	}
+	
+	public long getId(CustomerDto dto) {
+		long id = -1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT id" + " FROM customer" + " WHERE name=? and phone=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getPhone());
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				id = rs.getLong("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (conn != null)
+					conn.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return id;
+	}
 }

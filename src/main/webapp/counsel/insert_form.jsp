@@ -24,7 +24,7 @@
 	</jsp:include>
 	<div class="container mt-5">
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<a class="btn btn-primary me-md-2 mt-2" href="${pageContext.request.contextPath}/counsel/search_customer_id.jsp">고객 번호 찾기</a>
+			<a class="btn btn-primary me-md-2 mt-2" href="${pageContext.request.contextPath}/counsel/search_customer_id_form.jsp">고객 번호 찾기</a>
 		</div>
 		<form action="insert.jsp" method="post">
 			<div class="mb-3">
