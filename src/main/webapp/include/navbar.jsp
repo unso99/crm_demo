@@ -22,15 +22,9 @@
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/customer/insert_form.jsp">고객 등록</a></li>
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/index.jsp">고객 조회</a></li>
 							</ul></li>
-						<li class="nav-item dropdown" aria-current="page">
-							<a class="nav-link dropdown-toggle ${param.current eq 'counsel' ? 'active' : '' }" href="#"
-							id="navbarScrollingDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> 상담 </a>
-							<ul class="dropdown-menu"
-								aria-labelledby="navbarScrollingDropdown">
-								<li><a class="dropdown-item" href="#">상담 등록</a></li>
-								<li><a class="dropdown-item" href="#">상담 조회</a></li>
-							</ul></li>
+						<li class="nav-item">
+							<a class="nav-link ${param.current eq 'counsel' ? 'active' : '' }" href="${pageContext.request.contextPath}/counsel/list.jsp">상담</a>
+						</li>
 					</ul>
 					<div class="navbar-nav">
 						<c:choose>
