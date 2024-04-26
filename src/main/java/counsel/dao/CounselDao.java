@@ -24,6 +24,33 @@ public class CounselDao {
 		return dao;
 	}
 	
+	public boolean delete(long id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "DELETE FROM counsel"
+					+ " WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			rowCount = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(rowCount > 0) return true;
+		else return false;
+	}
+	
 	public CounselDto getData(long id) {
 		CounselDto dto = new CounselDto();
 		Connection conn = null;
