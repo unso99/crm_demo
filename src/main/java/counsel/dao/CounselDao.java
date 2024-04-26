@@ -24,6 +24,38 @@ public class CounselDao {
 		return dao;
 	}
 	
+	public boolean update(CounselDto dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			
+			String sql = "UPDATE counsel"
+					+ " SET customer_id=?, counselor=?, description=?, updated_at=SYSDATE, is_finished=?"
+					+ " WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, dto.getCustomer_id());
+			pstmt.setString(2, dto.getCounselor());
+			pstmt.setString(3, dto.getDescription());
+			pstmt.setString(4, dto.getIs_finished());
+			pstmt.setLong(5, dto.getId());
+			rowCount = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(rowCount > 0) return true;
+		else return false;
+	}
+	
 	public boolean delete(long id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

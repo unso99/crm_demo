@@ -37,7 +37,7 @@
 			  <input type="hidden" class="form-control" id="id" name="id" placeholder="홍길동" value="<%=dto.getId() %>">
 			</div>
 			<div class="form-check">
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" 
+			  <input class="form-check-input" type="checkbox" value="true" name="is_finished" 
 			  <%if(dto.getIs_finished().equals("true")) {%>
 			  	checked
 			  <%} %>>
@@ -50,25 +50,28 @@
 			  <input type="text" class="form-control" id="name" name="name" placeholder="홍길동" value="<%=customer_name %>" readonly>
 			</div>
 			<div class="mb-3">
-			  <label for="name" class="form-label">상담사</label>
-			  <input type="text" class="form-control" id="name" name="name" placeholder="홍길동" value="<%=dto.getCounselor() %>" readonly>
+			  <input type="hidden" class="form-control" id="customer_id" name="customer_id" placeholder="홍길동" value="<%=dto.getCustomer_id() %>">
+			</div>
+			<div class="mb-3">
+			  <label for="counselor" class="form-label">상담사</label>
+			  <input type="text" class="form-control" id="counselor" name="counselor" placeholder="홍길동" value="<%=dto.getCounselor() %>" readonly>
 			</div>
 			<div class="mb-3">
 			  <label for="description" class="form-label">상담 내용</label>
 			  <textarea class="form-control" id="description" name="description" rows="3" placeholder="상담내용을 입력해주세요."><%=dto.getDescription() %></textarea>
 			</div>
 			<div class="mb-3">
-			  <label for="name" class="form-label">최근 상담 날짜</label>
+			  <label for="updated_at" class="form-label">최근 상담 날짜</label>
 			  <%if(dto.getUpdated_at() != null) {%>
-			  	<input type="text" class="form-control" id="name" name="name" placeholder="홍길동" value="<%=dto.getUpdated_at() %>" readonly>
+			  	<input type="text" class="form-control" id="updated_at" name="updated_at" placeholder="홍길동" value="<%=dto.getUpdated_at() %>" readonly>
 			  <%} else { %>
-			  	<input type="text" class="form-control" id="name" name="name" placeholder="홍길동" value="<%=dto.getCreated_at() %>" readonly>
+			  	<input type="text" class="form-control" id="updated_at" name="updated_at" placeholder="홍길동" value="<%=dto.getCreated_at() %>" readonly>
 			  <%} %>
 			</div>
 			<div class="row">
 				<button type="submit" class="btn btn-primary mb-3">수정하기</button>
 				<a class="btn btn-danger mb-3" href="delete.jsp?id=<%=dto.getId() %>">삭제하기</a>
-				<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/index.jsp">뒤로가기</a>
+				<a class="btn btn-outline-primary" href="list.jsp">뒤로가기</a>
 			</div>
 		</form>
 	</div>
