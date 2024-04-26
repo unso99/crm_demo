@@ -23,6 +23,48 @@ public class CounselDao {
 
 		return dao;
 	}
+	
+	public CounselDto getData(long id) {
+		CounselDto dto = new CounselDto();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = new DbcpBean().getConn();
+			String sql = "SELECT *"
+					+ " FROM counsel"
+					+ " WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setId(id);
+				dto.setCustomer_id(rs.getLong("customer_id"));
+				dto.setCounselor(rs.getString("counselor"));
+				dto.setDescription(rs.getString("description"));
+				dto.setCreated_at(rs.getString("created_at"));
+				dto.setUpdated_at(rs.getString("updated_at"));
+				dto.setIs_finished(rs.getString("is_finished"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (conn != null)
+					conn.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}
 
 	public boolean insert(CounselDto dto) {
 		Connection conn = null;

@@ -49,7 +49,9 @@
 		  <tbody>
 		  	<%for(CounselDto dto : list) {%>
 		  		<tr>
-		  			<th scope="row"><%=dto.getId() %></th>
+		  			<th scope="row">
+		  				<a href="detail.jsp?id=<%=dto.getId()%>"><%=dto.getId() %></a>
+		  			</th>
 					<td><%=dto.getCustomer_name() %></td>
 					<td><%=dto.getCounselor() %></td>
 					<td>
