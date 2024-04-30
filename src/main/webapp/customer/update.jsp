@@ -1,18 +1,10 @@
-<%@page import="customer.dao.CustomerDao"%>
 <%@page import="customer.dto.CustomerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Long id = Long.parseLong(request.getParameter("id"));
-	String name = request.getParameter("name");
-	String birth = request.getParameter("birth");
-	String phone = request.getParameter("phone");
-	String email = request.getParameter("email");
-	String address = request.getParameter("address");
-	
-	CustomerDto dto = new CustomerDto(id,name,birth,phone,email,address);
-	
-	boolean isSuccess = CustomerDao.getInstance().update(dto);
+	boolean isSuccess = (boolean)request.getAttribute("isSuccess");
+
+	CustomerDto dto = (CustomerDto)request.getAttribute("dto");
 %>
 <!DOCTYPE html>
 <html>
