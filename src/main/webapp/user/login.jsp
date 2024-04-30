@@ -1,37 +1,10 @@
 <%@page import="owner.dto.OwnerDto"%>
-<%@page import="owner.dao.OwnerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-String id = request.getParameter("id");
-String pwd = request.getParameter("password");
-String isSave = request.getParameter("isSave");
-boolean isSuccess = false; 
-OwnerDto dto = OwnerDao.getInstance().getData(id); 
-if (isSave != null) {
-	//아이디 비밀번호를 쿠키로 응답하고 1주일 동안 유지되도록 한다.
-	Cookie cook1 = new Cookie("savedId", id);
-	Cookie cook2 = new Cookie("savedPwd", pwd);
-
-	cook1.setMaxAge(60 * 60 * 24 * 7);
-	cook2.setMaxAge(60 * 60 * 24 * 7);
-	response.addCookie(cook1);
-	response.addCookie(cook2);
-
-} else {
-	Cookie cook1 = new Cookie("savedId", "");
-	Cookie cook2 = new Cookie("savedPwd", null);
-	cook1.setMaxAge(0);
-	cook2.setMaxAge(0);
-	response.addCookie(cook1);
-	response.addCookie(cook2);
-}
-
-if (dto != null && dto.getId() != null && dto.getId().equals(id) && dto.getPassword().equals(pwd)) {
-	isSuccess = true;
-	session.setAttribute("id", id);
-}
+	boolean isSuccess = (boolean)request.getAttribute("isSuccess");
+	OwnerDto dto = (OwnerDto)request.getAttribute("dto");
 %>
 <!DOCTYPE html>
 <html>

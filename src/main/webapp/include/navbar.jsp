@@ -33,7 +33,7 @@
 					      		<a class="nav-link" href="${pageContext.request.contextPath}/user/logout.jsp">로그아웃</a>
 			      			</c:when>
 			      			<c:otherwise>
-				      			<a class="nav-link" href="${pageContext.request.contextPath}/user/login_form.jsp">로그인</a>
+				      			<a class="nav-link" href="${pageContext.request.contextPath}/owner/login_form">로그인</a>
 			      			</c:otherwise>
 			      		</c:choose>
 					</div>

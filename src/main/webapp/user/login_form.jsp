@@ -1,23 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-String savedId = "";
-String savedPwd = "";
-Cookie[] cooks = request.getCookies();
-boolean hasCook = false;
-if (cooks != null) {
-	for (Cookie tmp : cooks) {
-		String key = tmp.getName();
-		if (key.equals("savedId")) {
-			savedId = tmp.getValue();
-		}
+String savedId = (String)request.getAttribute("savedId");
+String savedPwd = (String)request.getAttribute("savedPwd");
 
-		if (key.equals("savedPwd")) {
-			savedPwd = tmp.getValue();
-			hasCook = true;
-		}
-	}
-}
 %>
 <!DOCTYPE html>
 <html>
@@ -48,8 +34,7 @@ if (cooks != null) {
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
 						</div>
-						<form class="user"
-							action="login.jsp" method="post">
+						<form action="${pageContext.request.contextPath}/owner/login" method="post">
 							<div class="form-group">
 								<input type="text" class="form-control form-control-user"
 									value="<%=savedId%>" id="exampleInputEmail" name="id"
