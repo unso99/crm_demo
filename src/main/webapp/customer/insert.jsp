@@ -3,15 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String name = request.getParameter("name");
-	String birth = request.getParameter("birth");
-	String phone = request.getParameter("phone");
-	String email = request.getParameter("email");
-	String address = request.getParameter("address");
-	
-	CustomerDto dto = new CustomerDto(name,birth,phone,email,address);
-	
-	boolean isSuccess = CustomerDao.getInstance().insert(dto);
+	CustomerDto dto = (CustomerDto)request.getAttribute("dto");
+
+	boolean isSuccess = (boolean)request.getAttribute("isSuccess");
 %>    
 <!DOCTYPE html>
 <html>
