@@ -16,8 +16,8 @@ import customer.dao.CustomerDao;
 
 @WebServlet("/counsel/list")
 public class ListServlet extends HttpServlet {
-	final CounselDao counselDao = CounselDao.getInstance();
-	final CustomerDao customerDao = CustomerDao.getInstance();
+	private final CounselDao counselDao = CounselDao.getInstance();
+	private final CustomerDao customerDao = CustomerDao.getInstance();
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		

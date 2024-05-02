@@ -16,8 +16,8 @@ import customer.dto.CustomerDto;
 
 @WebServlet("/counsel/insert")
 public class InsertServlet extends HttpServlet {
-	final CounselDao counselDao = CounselDao.getInstance();
-	final CustomerDao customerDao = CustomerDao.getInstance();
+	private final CounselDao counselDao = CounselDao.getInstance();
+	private final CustomerDao customerDao = CustomerDao.getInstance();
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

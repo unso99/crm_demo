@@ -14,7 +14,7 @@ import customer.dto.CustomerDto;
 
 @WebServlet("/counsel/search_customer_id")
 public class SearchCustomerIdServlet extends HttpServlet {
-	final CustomerDao dao = CustomerDao.getInstance();
+	private final CustomerDao dao = CustomerDao.getInstance();
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -14,7 +14,7 @@ import customer.dto.CustomerDto;
 
 @WebServlet("/customer/insert")
 public class InsertServlet extends HttpServlet {
-	
+	private final CustomerDao dao = CustomerDao.getInstance();
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String name = req.getParameter("name");
@@ -25,7 +25,7 @@ public class InsertServlet extends HttpServlet {
 		
 		CustomerDto dto = new CustomerDto(name,birth,phone,email,address);
 		
-		boolean isSuccess = CustomerDao.getInstance().insert(dto);
+		boolean isSuccess = dao.insert(dto);
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("isSuccess", isSuccess);

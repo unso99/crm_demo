@@ -14,6 +14,7 @@ import customer.dto.CustomerDto;
 
 @WebServlet("/customer/update")
 public class UpdateServlet extends HttpServlet {
+	private final CustomerDao dao = CustomerDao.getInstance();
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long id = Long.parseLong(req.getParameter("id"));
@@ -25,7 +26,7 @@ public class UpdateServlet extends HttpServlet {
 		
 		CustomerDto dto = new CustomerDto(id,name,birth,phone,email,address);
 		
-		boolean isSuccess = CustomerDao.getInstance().update(dto);
+		boolean isSuccess = dao.update(dto);
 		
 		req.setAttribute("dto", dto);
 		req.setAttribute("isSuccess", isSuccess);
