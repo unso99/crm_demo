@@ -30,7 +30,7 @@
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<a class="btn btn-primary me-md-2 mt-2" href="${pageContext.request.contextPath}/counsel/search_customer_id_form.jsp">고객 번호 찾기</a>
 		</div>
-		<form action="insert.jsp" method="post">
+		<form action="${pageContext.request.contextPath }/counsel/insert" method="post">
 			<div class="mb-3">
 			  <label for="customer_id" class="form-label">고객 번호</label>
 			  <%if(customer_id > 0) {%>

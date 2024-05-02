@@ -1,16 +1,10 @@
-<%@page import="customer.dao.CustomerDao"%>
 <%@page import="customer.dto.CustomerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String name = request.getParameter("name");
-	String phone = request.getParameter("phone");
-	
-	CustomerDto dto = new CustomerDto();
-	dto.setName(name);
-	dto.setPhone(phone);
-	
-	long id = CustomerDao.getInstance().getId(dto);
+	long id = (long)request.getAttribute("id");
+
+	CustomerDto dto = (CustomerDto)request.getAttribute("dto");
 %>
 <!DOCTYPE html>
 <html>

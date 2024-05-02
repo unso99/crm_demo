@@ -4,13 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//상담 번호
-	long id = Long.parseLong(request.getParameter("id"));
-	//상담 정보
-	CounselDto dto = CounselDao.getInstance().getData(id);
-	
-	//고객 이름
-	String customer_name = CustomerDao.getInstance().getData(dto.getCustomer_id()).getName();
+	CounselDto dto = (CounselDto)request.getAttribute("dto");
+	String customer_name = (String)request.getAttribute("customer_name");
 %>
 <!DOCTYPE html>
 <html>

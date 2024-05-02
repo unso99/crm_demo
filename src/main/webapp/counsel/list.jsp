@@ -6,12 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	List<CounselDto> list = CounselDao.getInstance().getList();
-
-	for(CounselDto tmp : list) {
-		String name = CustomerDao.getInstance().getData(tmp.getCustomer_id()).getName();
-		tmp.setCustomer_name(name);
-	}
+	List<CounselDto> list = (List<CounselDto>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -50,7 +45,7 @@
 		  	<%for(CounselDto dto : list) {%>
 		  		<tr>
 		  			<th scope="row">
-		  				<a href="detail.jsp?id=<%=dto.getId()%>"><%=dto.getId() %></a>
+		  				<a href="${pageContext.request.contextPath}/counsel/detail?id=<%=dto.getId()%>"><%=dto.getId() %></a>
 		  			</th>
 					<td><%=dto.getCustomer_name() %></td>
 					<td><%=dto.getCounselor() %></td>

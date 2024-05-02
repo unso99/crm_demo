@@ -23,7 +23,7 @@
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/index.jsp">고객 조회</a></li>
 							</ul></li>
 						<li class="nav-item">
-							<a class="nav-link ${param.current eq 'counsel' ? 'active' : '' }" href="${pageContext.request.contextPath}/counsel/list.jsp">상담</a>
+							<a class="nav-link ${param.current eq 'counsel' ? 'active' : '' }" href="${pageContext.request.contextPath}/counsel/list">상담</a>
 						</li>
 					</ul>
 					<div class="navbar-nav">

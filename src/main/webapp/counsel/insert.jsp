@@ -1,23 +1,11 @@
 <%@page import="customer.dto.CustomerDto"%>
-<%@page import="customer.dao.CustomerDao"%>
-<%@page import="counsel.dao.CounselDao"%>
-<%@page import="counsel.dto.CounselDto"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	long customer_id = Long.parseLong(request.getParameter("customer_id"));
-	String counselor = request.getParameter("counselor");
-	String description = request.getParameter("description");
-	
-	CounselDto dto = new CounselDto();
-	
-	dto.setCustomer_id(customer_id);
-	dto.setCounselor(counselor);
-	dto.setDescription(description);
-	
-	boolean isSuccess = CounselDao.getInstance().insert(dto);
-	
-	CustomerDto customer = CustomerDao.getInstance().getData(customer_id);
+	boolean isSuccess = (boolean)request.getAttribute("isSuccess");
+	CustomerDto customer = (CustomerDto)request.getAttribute("customer");
+	long customer_id = (long)request.getAttribute("customer_id");
 %>
 <!DOCTYPE html>
 <html>
@@ -42,7 +30,7 @@
 		<%if(isSuccess) {%>
 			<p>
 				<strong><%=customer.getName() %></strong> 고객님의 상담이 등록되었습니다.
-				<a href="list.jsp">확인</a>
+				<a href="${pageContext.request.contextPath }/counsel/list">확인</a>
 			</p>
 		<%} else { %>
 			<p>
