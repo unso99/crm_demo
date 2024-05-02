@@ -27,7 +27,7 @@
 		<jsp:param value="counsel" name="current"/>
 	</jsp:include>
 	<div class="container mt-5">
-		<form action="update.jsp" method="post">
+		<form action="${pageContext.request.contextPath }/counsel/update" method="post">
 			<div class="mb-3">
 			  <input type="hidden" class="form-control" id="id" name="id" placeholder="홍길동" value="<%=dto.getId() %>">
 			</div>

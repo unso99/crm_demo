@@ -3,25 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	long id = Long.parseLong(request.getParameter("id"));
-	long customer_id = Long.parseLong(request.getParameter("customer_id"));
-	String counselor = (String)session.getAttribute("id");
-	String description = request.getParameter("description");
-	String is_finished;
+	boolean isSuccess = (boolean)request.getAttribute("isSuccess");
 	
-	if(request.getParameter("is_finished") == null) {
-		is_finished = "false";
-	}else {
-		is_finished = "true";
-	}
-	CounselDto dto = new CounselDto();
-	dto.setId(id);
-	dto.setCustomer_id(customer_id);
-	dto.setCounselor(counselor);
-	dto.setIs_finished(is_finished);
-	dto.setDescription(description);
-	
-	boolean isSuccess = CounselDao.getInstance().update(dto);
+	CounselDto dto = (CounselDto)request.getAttribute("dto");
 %>
 <!DOCTYPE html>
 <html>
@@ -43,12 +27,12 @@
 		<%if(isSuccess) {%>
 			<p>
 				상담 정보가 수정되었습니다.
-				<a href="list.jsp">확인</a>
+				<a href="${pageContext.request.contextPath}/counsel/list">확인</a>
 			</p>
 		<%} else { %>
 			<p>
 				상담 정보 수정에 실패했습니다.
-				<a href="detail.jsp?id=<%=dto.getId() %>">다시 수정하기</a>
+				<a href="${pageContext.request.contextPath}/detail?id=<%=dto.getId() %>">다시 수정하기</a>
 			</p>
 		<%} %>
 	</div>
